@@ -1,0 +1,13 @@
+h1{
+  color:yellow;
+}
+form {
+  display: table;
+}
+p {
+  display: table-row;
+}
+label { display: table-cell; }
+input { display: table-cell; }
+select { display: table-cell; }
+textarea { display: table-cell; }

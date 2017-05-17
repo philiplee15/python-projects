@@ -1,0 +1,30 @@
+h1{
+  color:blue;
+  font-size: 20px;
+}
+.container{
+  text-align: center;
+}
+form > submit {
+  display: inline-block;
+}
+.gold{
+  border: 1px black solid;
+  width: 150px;
+  background: yellow;
+}
+.room{
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+  display: inline-block;
+}
+.red{
+  color: red
+}
+.green{
+  color: green
+}
+.activity{
+  text-align: left;
+}

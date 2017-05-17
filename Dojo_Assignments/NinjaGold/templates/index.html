@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form Test Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script> -->
+
+  </head>
+  <body>
+
+    <div class="gold">
+      <form action="/find" method="post">
+        <p>Your Gold: <span>{{session['gold']}}</span></p>
+        <input type="hidden" name="building" value="reset" />
+        <input type="submit" value="Reset"/>
+      </form>
+    </div>
+    <div class ="container">
+      <div>
+        <div class="room">
+          <h1>Farm</h1>
+          <p>(earns 10-20 golds)</p>
+          <form class="" action="/find" method="post">
+            <input type="hidden" name="building" value="farm" />
+            <input type="submit" value="Find Gold!"/>
+          </form>
+        </div> <!-- end room -->
+
+        <div class="room">
+          <h1>Cave</h1>
+          <p>(earns 5-10 golds)</p>
+          <form class="" action="/find" method="post">
+            <input type="hidden" name="building" value="cave" />
+            <input type="submit" value="Find Gold!"/>
+          </form>
+        </div> <!-- end room -->
+
+        <div class="room">
+          <h1>House</h1>
+          <p>(earns 2-5 golds)</p>
+          <form class="" action="/find" method="post">
+            <input type="hidden" name="building" value="house" />
+            <input type="submit" value="Find Gold!"/>
+          </form>
+        </div> <!-- end room -->
+
+        <div class="room">
+          <h1>Casino</h1>
+          <p>(earns 0-50 golds)</p>
+          <form class="" action="/find" method="post">
+            <input type="hidden" name="building" value="casino" />
+            <input type="submit" value="Find Gold!"/>
+          </form>
+        </div>
+      </div> <!-- end room -->
+      <div class="activity" style="overflow-y: scroll; border: 5px solid red; height: 250px;">
+        <ul>
+          {% for val in session['list'] %}
+            <li class="{{val[1]}}"> {{val[0]}} </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </body>
+</html>

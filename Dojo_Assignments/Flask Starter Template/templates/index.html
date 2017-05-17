@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form Test Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script> -->
+
+  </head>
+  <body>
+    <h1>Index Page</h1>
+    <p>Create a User</p>
+    <form class="" action="/users" method="post">
+      Name: <input type="text" name="name">
+      Email: <input type="text" name="email">
+      <input type="submit" value="create user">
+    </form>
+    <h1>Counter</h1>
+    <form class="" action="/count" method="post">
+      <input type="submit" name="count" value="Count+2">
+      <input type="submit" name="reset" value="Reset">
+    </form>
+    <h1>{{session['count']}}</h1>
+
+    <!-- <p>Phrases: {{phrase}}</p>
+    <p>Times: {{times}}</p>
+    {% for x in range(0,5) %}
+      {% if x%2 ==0  %}
+        <p>{{x+1}}</p>
+      {% endif %}
+    {% endfor %}
+  </body> -->
+</html>
