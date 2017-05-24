@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form Test Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script> -->
+
+  </head>
+  <body>
+    <h1>WALL</h1>
+    <table style="width:500px; margin:0 auto; border:'1'">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Friend Since</th>
+        <th>Year</th>
+      </tr>
+      {% for val in all_friends%}
+        <tr>
+          <td> {{val.first_name}} {{val.last_name}}</td>
+          <td>{{val.age}}</td>
+          <td>{{val.created_at}}</td>
+          <td>{{val.created_at}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <h2>Add a Friend</h2>
+    <form action='/friends' method='POST'>
+      <label>First Name:</label><input type="text" name="first_name" id="first_name"><br>
+      <label for="last_name">Last Name:</label><input type="text" name="last_name" id="last_name"><br>
+      <label for="age">Age: </label><input type="text" name="age" id="occupation"><br>
+      <input type="submit" value="Add">
+    </form>
+  </body>
+</html>

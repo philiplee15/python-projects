@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+<form action="/success" method="POST">
+  {% csrf_token %}
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+        <h1>Registration Form</h1>
+      </div>
+
+      <div class="login-form">
+        <div class="control-group">
+          <label><strong>First Name:<strong></label>
+          <input type="text" class="login-field" name="fname">
+        </div>
+
+        <div class="control-group">
+          <label><strong>Last Name:<strong></label>
+          <input type="text" class="login-field" name="lname">
+        </div>
+
+        <div class="control-group">
+          <label><strong>E-mail:<strong></label>
+          <input type="text" class="login-field" name="email">
+        </div>
+
+        <div class="control-group">
+          <label class="login-field-icon fui-user" for="login-name"><strong>Username: </strong></label>
+          <input type="text" class="login-field" name="username">
+        </div>
+
+        <div class="control-group">
+          <label class="login-field-icon fui-user" for="login-name"><strong>Birthday: </strong></label>
+          <input type="date" class="login-field" name="bday">
+        </div>
+
+        <div class="control-group">
+          <label class="login-field-icon fui-lock" for="login-pass"><strong>Password:<strong></label>
+          <input type="password" class="login-field" name="password">
+        </div>
+
+
+        <div class="control-group">
+          <label class="login-field-icon fui-lock" for="login-pass"><strong>Confirm Password:<strong></label>
+          <input type="password" class="login-field" name="confirm">
+        </div>
+
+        <input type="submit" value="Submit" name="submit" class="btn btn-primary btn-large btn-block"><br>
+      </div>
+    </div>
+  </div>
+</form>
