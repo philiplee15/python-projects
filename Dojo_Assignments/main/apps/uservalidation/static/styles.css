@@ -31,7 +31,12 @@ text-align: center;
 .control-group {
 margin-bottom: 10px;
 }
-
+::-webkit-datetime-edit-text { text-align: center;}
+::-webkit-datetime-edit-month-field { color: blue; }
+::-webkit-datetime-edit-day-field { color: green; }
+::-webkit-datetime-edit-year-field { color: purple; }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { background: orange; }
 input {
 text-align: center;
 background-color: #ECF0F1;

@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 
 
-<form action="/login" method="POST">
+<form action="/login" method="GET">
   {% csrf_token %}
 	<div class="login">
 		<div class="login-screen">
@@ -25,13 +25,22 @@
 				</div>
 
 				<div class="control-group">
-				<input type="password" class="login-field" value="" placeholder="password" name="password">
+				<input type="password" class="login-field" placeholder="password" name="passy">
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 				</div>
-              <input type="submit" value="Log in" name="password" class="btn btn-primary btn-large btn-block" ><br>
+              <input type="submit" value="Log in" name="submit" class="btn btn-primary btn-large btn-block" ><br>
               <a href="/register" class="btn btn-danger btn-large btn-block">Register</a><br>
 		  </div>
 		</div>
 	</div>
+  <div class="success-login">
+    <ul>
+      {% if messages %}
+        {% for val in messages %}
+          <li>{{val}}</li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
 </form>
 </html>

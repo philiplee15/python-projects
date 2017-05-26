@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.courses',
     'apps.time_view',
     'apps.vinmyMVC',
     'apps.first_app',

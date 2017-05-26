@@ -1,32 +1,31 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import User
-
+from django.contrib import messages
+import re
 
 # Create your views here.
 def index(request):
     users = User.userManager.all()
-    print(users.first_name)
+    print(users)
     return render(request, 'login.html')
 def login(request):
-    username = request.POST['username']
-    pw = request.POST['password']
+    username = request.GET['username']
+    pw = request.GET['passy']
     user = User.userManager.login(username, pw)
-    print(type(user))
     if 'error' in user:
-        pass
-    if 'theuser' in user:
-        password
-    return HttpResponse("Done running userManager method.")
-
+        messages.error(request, user['error'])
+        return redirect('/register')
+    if 'success' in user:
+        return render(request, "forum.html")
 
 def register(request):
     return render(request, 'register.html')
 def success(request):
-    first = request.POST['fname']
-    last = request.POST['lname']
-    email = request.POST['email']
-    username = request.POST['username']
-    bday = request.POST['bday']
-    pw = request.POST['password']
-    newentry = User.userManager.create(first_name=first, last_name=last, email=email,username=username,bday=bday,password=pw)
-    return HttpResponse("Done running userManager method.")
+    register = User.userManager.register(request.POST)
+    if register['error']:
+        for val in register['error']:
+            messages.error(request, val)
+        return render(request, 'register.html')
+    else:
+        messages.success(request, register['success'])
+        return render(request, 'login.html')

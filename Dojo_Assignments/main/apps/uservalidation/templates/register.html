@@ -49,4 +49,13 @@
       </div>
     </div>
   </div>
+  <div class="flash">
+
+      <ul class="messages">
+        {% for msg in messages %}
+          <li> {{ msg }} </li>
+        {% endfor %}
+      </ul>
+
+  </div>
 </form>
