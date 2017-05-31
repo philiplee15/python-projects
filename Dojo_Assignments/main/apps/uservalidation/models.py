@@ -49,7 +49,7 @@ class UserManager(models.Manager):
             print(post['bday'])
         if not response['error']:
             response['success'] = "You have successfully registered. Please login to begin your journey."
-            user = User.userManager.create(first_name=post['fname'], last_name=post['lname'], username=post['username'], password=post['password'], bday=post['bday'])
+            user = User.userManager.create(first_name=post['fname'], last_name=post['lname'], username=post['username'], email=post['email'], password=post['password'], bday=post['bday'])
             return response
         else:
             return response

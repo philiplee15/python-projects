@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'book_review/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'book_review/bootstrap.min.css' %}">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" style="background-color: #3498DB; color:white;">DOJO BELT REVIEWS</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Back to Portfolio <span class="sr-only">(current)</span></a></li>
+            <li><a href="/dashboard">HOME</a></li>
+            <li><a href="/dashboard/add">ADD REVIEW</a></li>
+          </ul>
+          <form action="/search" class="navbar-form navbar-left" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" name="booksearch" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Search Book</button>
+          </form>
+          {% if messages %}
+            <ul class="nav navbar-nav">
+              {% for val in messages %}
+                <li>{{val}}</li>
+              {% endfor %}
+            </ul>
+            <a href="/dashboard/add">&nbsp;Add?</a>
+          {% endif %}
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container-fluid well bg">
+<!-- MAIN CONTENT -->
+
+      <div class="bg" style="background-color: #3498DB;">
+        <div class="col-md-4 col-md-offset-1 well" >
+          <h1>Recent Book Reviews</h1>
+          {% for val in reviews %}
+            <div class="reviews" style="color:white; padding:.5em;">
+              <p><strong><a href="/dashboard/{{val.book.id}}" style="color:black">{{val.book.title}}</a></strong></p>
+              <p>Rating:
+
+                  <span style="font-size:100%;color:yellow;">&starf;</span>
+
+              </p>
+              <p><a href="/dashboard/users/{{val.user.id}}"> {{val.user.username}} </a> says: {{val.content}}</p>
+              <p>Posted on <i>{{val.created_at}}</i></p>
+              {% if val.user.id == request.session.id %}
+                <form action="/delete" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="delete" value="{{val.id}}">
+                  <input type="hidden" name="book_id" value="{{val.book.id}}">
+                  <input type="submit" name="submit" value="Delete">
+                </form>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div id="other" class="col-md-4 col-md-offset-1 well">
+          <h1>Other Books with Reviews: </h1>
+          <div style="padding: 5px; overflow-y:scroll; width:100%; background-color: #0099CC; border-radius:.2em; color: black;">
+            {% for val in books %}
+              <p><strong><a href="/dashboard/{{val.id}}">{{val.title}}</a></strong></p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+<!-- END MAIN CONTENT -->
+
+    </div>
+<!-- END CONTAINER -->
+  </body>
+</html>

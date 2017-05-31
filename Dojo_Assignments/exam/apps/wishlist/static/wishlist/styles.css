@@ -1,0 +1,24 @@
+.reviews {
+  border-radius: .5em;
+  background-color: #33b5e5;
+  opacity: .72;
+  padding: 5px;
+  margin-bottom: 3px;
+}
+.bg {
+    background-image: url('books.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#other a {
+  color: black;
+}
+.fix {
+    background:none!important;
+    border:none;
+    padding:0!important;
+    /*border is optional*/
+    border-bottom:1px solid #444;
+}

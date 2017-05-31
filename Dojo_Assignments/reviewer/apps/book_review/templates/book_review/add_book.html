@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <nav style="float:right;">
+      <a href="/dashboard">Home</a>
+      <a href="/logout">Logout</a>
+    </nav>
+    <h1>Submit a new book </h1>
+    <form class="" action="/submitbook" method="post" style="margin-left:25px;">
+      {% csrf_token %}
+      <p for="">Book Title: <input type="text" name="title"></p>
+      <p for="">Author: </p>
+      <span style="margin-left:10px;">Choose from this list: </span>
+      <select name="authors">
+        <option>None</option>
+        {% for val in authors %}
+            <option name="{{val.name}}">{{val.name}}</option>
+        {% endfor %}
+      </select><br>
+      <span style="margin-left:10px;">Or add new: <input type="text" name="author"></span><br>
+      <p>Review: </p>
+      <textarea name="review" rows="5" cols="25"></textarea>
+      <p>Rating:
+      <select name="rating">
+        <option name ="1" value="1">1</option>
+        <option name="2" value="2">2</option>
+        <option name="3" value="3">3</option>
+        <option name="4" value="4">4</option>
+        <option name="5" value="5">5</option>
+      </select></p>
+      <input type="submit" name="submit">
+    </form>
+    <ul>
+    {% if messages %}
+      {% for val in messages %}
+        <li>{{val}}</li>
+      {% endfor %}
+    {% endif %}
+    </ul>
+
+    <input style="position: absolute; bottom:50px;" type=button value="Previous Page" onClick="javascript:history.go(-1);">
+  </body>
+</html>

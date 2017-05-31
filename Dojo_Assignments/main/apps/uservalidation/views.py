@@ -8,13 +8,14 @@ def index(request):
     users = User.userManager.all()
     print(users)
     return render(request, 'login.html')
+    
 def login(request):
     username = request.GET['username']
     pw = request.GET['passy']
     user = User.userManager.login(username, pw)
     if 'error' in user:
         messages.error(request, user['error'])
-        return redirect('/register')
+        return redirect('/')
     if 'success' in user:
         return render(request, "forum.html")
 

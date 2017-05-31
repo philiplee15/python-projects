@@ -1,0 +1,63 @@
+* {
+box-sizing: border-box;
+}
+
+*:focus {
+	outline: none;
+}
+.bg {
+    background-image: url('books.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body {
+	font-family: Arial;
+	background-color: #3498DB;
+	padding: 50px;
+}
+::-webkit-datetime-edit-text { text-align: center;}
+::-webkit-datetime-edit-month-field { color: blue; }
+::-webkit-datetime-edit-day-field { color: green; }
+::-webkit-datetime-edit-year-field { color: purple; }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { background: orange; }
+
+.btn {
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: #2980B9;
+}
+
+.login-link {
+  font-size: 12px;
+  color: #444;
+  display: block;
+	margin-top: 12px;
+}
+.reviews{
+	background: rgb(54, 25, 25);
+  background: rgba(54, 25, 25, .8);
+	margin-bottom: 1%;
+	border-radius: .3em;
+	color: white;
+}
+.reviews a {
+
+}

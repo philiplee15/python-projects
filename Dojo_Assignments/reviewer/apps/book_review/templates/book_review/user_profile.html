@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <nav style="float:right;">
+      <a href="/dashboard">Home</a> |
+      <a href="/dashboard/add">Add Book & Review </a> |
+      <a href="/logout">Logout</a> |
+    </nav>
+
+    <br>
+
+    <h1>User: {{user.username}}</h1>
+    <p>Name: {{user.first_name}} {{user.last_name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Total Reviews: {{count}}</p>
+
+    <p>Posted Reviews on the following books: </p>
+    <ul>
+      {% for val in books %}
+        <li>{{val.book.title}}</li>
+      {% endfor %}
+    </ul>
+
+  </body>
+</html>
